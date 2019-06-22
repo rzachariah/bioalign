@@ -22,8 +22,8 @@ You can run this application locally with one command.
 ```
 docker-compose up
 ```
-Find the web UI at http://localhost:8080
-Find the swagger documentation at http://localhost:3000
+Find the web UI at http://localhost:3000
+Find the swagger documentation at http://localhost:4000
 
 ## Development Standards
 We practice sustainable development: every commit should leave the codebase in a state ready to accept new work.
