@@ -34,7 +34,7 @@ class FormContainer extends Component {
        let value = e.target.value;
        let name = e.target.name;
    this.setState( prevState => ({ request : 
-        {...prevState.request, [name]: value
+        {...prevState.request, [name]: value.toUpperCase()
         }
       }), () => console.log(this.state.request))
   }
