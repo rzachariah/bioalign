@@ -1,5 +1,5 @@
 # bioalign
-Find proteins containing a DNA sequence
+Find protein containing a DNA sequence
 
 ## Overview
 This application enables users to match DNA sequences with proteins. Given a DNA sequence as a string of nucleotides, it will search a protein database and return the name and location of a protein with a matching seqeunce, if found.
