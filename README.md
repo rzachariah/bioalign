@@ -30,10 +30,10 @@ We practice sustainable development: every commit should leave the codebase in a
 
 This application is designed to be modular and testable. There are separate folders for the various components
 
-- *ui*: react app
-- *api*: nodejs REST api
-- *compute*: python compute server
-- *db*: persistent storage
+- **ui**: react app
+- **api**: nodejs REST api
+- **compute**: python compute server
+- **db**: persistent storage
 
 We use whitespace for tabs: 4 spaces.
 
