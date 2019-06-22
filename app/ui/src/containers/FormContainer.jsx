@@ -10,7 +10,7 @@ class FormContainer extends Component {
 
     this.state = {
       request: {
-        name: '',
+        sequence: '',
       },
 
     }
@@ -25,7 +25,7 @@ class FormContainer extends Component {
   handleSequence(e) {
    let value = e.target.value;
    this.setState( prevState => ({ request : 
-        {...prevState.request, name: value
+        {...prevState.request, sequence: value
         }
       }), () => console.log(this.state.request))
   }
@@ -62,7 +62,7 @@ class FormContainer extends Component {
       e.preventDefault();
       this.setState({ 
         request: {
-          name: ''
+          sequence: ''
         },
       })
   }
@@ -74,8 +74,8 @@ class FormContainer extends Component {
        
             <Input inputType={'text'}
                    title= {'DNA sequence'} 
-                   name= {'name'}
-                   value={this.state.request.name} 
+                   name= {'sequence'}
+                   value={this.state.request.sequence} 
                    placeholder = {'Enter DNA sequence'}
                    handleChange = {this.handleInput}
                    
