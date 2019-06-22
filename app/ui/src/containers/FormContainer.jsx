@@ -1,7 +1,6 @@
 import React, {Component} from 'react';  
 
 /* Import Components */
-import SequenceInput from '../components/SequenceInput'; 
 import Button from '../components/Button'
 
 class FormContainer extends Component {  
@@ -9,34 +8,30 @@ class FormContainer extends Component {
     super(props);
 
     this.state = {
-      request: {
-        sequence: '',
-      },
-
+      sequence: ''
     }
-    this.handleSequence = this.handleSequence.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleClearForm = this.handleClearForm.bind(this);
+    this.handleSequenceChange = this.handleSequenceChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClear = this.handleClear.bind(this);
   }
 
   /* This lifecycle hook gets executed when the component mounts */
 
-  handleSequence(e) {
-    console.log('Sequence changed')
+  handleSequenceChange(e) {
     let value = e.target.value;
     const filtered = value
       .toUpperCase()
       .replace(/[^ATCG]+/g, '');
-    this.setState( prevState => ({ request : 
-      {...prevState.request, sequence: filtered
-        }
-      }), () => console.log(this.state.request))
+    this.setState({sequence: filtered});
   }
 
-  handleFormSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
-    let alignRequest = this.state.request;
-
+    const sequence = this.state.sequence;
+    console.log(`Submit sequence: ${sequence}`);
+    let alignRequest = {
+      sequence
+    };
     fetch('http://example.com',{
         method: "POST",
         body: JSON.stringify(alignRequest),
@@ -51,35 +46,37 @@ class FormContainer extends Component {
     })
   }   
 
-  handleClearForm(e) {
-  
+  handleClear(e) {
+    console.log('Clear sequence');
       e.preventDefault();
       this.setState({ 
-        request: {
-          sequence: ''
-        },
-      })
+        sequence: ''
+      });
   }
 
   render() {
     return (
     
-        <form className="container-fluid" onSubmit={this.handleFormSubmit}>
+        <form className="container-fluid" onSubmit={this.handleSubmit}>
 
-          <SequenceInput inputType={'text'}
-                   value={this.state.request.sequence} 
-                   onChange = {this.handleSequence}
-          />
+          <input
+            type="text"
+            className="form-control"
+            name="sequence"
+            placeholder="Enter DNA sequence"
+            value={this.state.sequence}
+            onChange = {this.handleSequenceChange}
+          /> { /* Sequence Input */ }
         
           <Button 
-              action = {this.handleFormSubmit}
+              action = {this.handleSubmit}
               type = {'primary'} 
               title = {'Submit'} 
             style={buttonStyle}
-          /> { /*Submit */ }
+          /> { /* Submit */ }
           
           <Button 
-            action = {this.handleClearForm}
+            action = {this.handleClear}
             type = {'secondary'}
             title = {'Clear'}
             style={buttonStyle}
