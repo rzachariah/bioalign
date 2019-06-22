@@ -1,0 +1,18 @@
+version: '2'
+services:
+  ui:
+    build:
+      context: ./app/ui
+    container_name: ui
+    ports:
+      - "3000:3000"
+      - "35729:35729"
+    volumes:
+      - ./app/ui:/app
+
+    networks:
+      - bioalign
+
+networks:
+  bioalign:
+    driver: bridge     
