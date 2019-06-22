@@ -1,7 +1,7 @@
 import React, {Component} from 'react';  
 
 /* Import Components */
-import Input from '../components/Input';  
+import SequenceInput from '../components/SequenceInput'; 
 import Button from '../components/Button'
 
 class FormContainer extends Component {  
@@ -17,24 +17,18 @@ class FormContainer extends Component {
     this.handleSequence = this.handleSequence.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
-    this.handleInput = this.handleInput.bind(this);
   }
 
   /* This lifecycle hook gets executed when the component mounts */
-  
-  handleSequence(e) {
-   let value = e.target.value;
-   this.setState( prevState => ({ request : 
-        {...prevState.request, sequence: value
-        }
-      }), () => console.log(this.state.request))
-  }
 
-  handleInput(e) {
-       let value = e.target.value;
-       let name = e.target.name;
-   this.setState( prevState => ({ request : 
-        {...prevState.request, [name]: value.toUpperCase()
+  handleSequence(e) {
+    console.log('Sequence changed')
+    let value = e.target.value;
+    const filtered = value
+      .toUpperCase()
+      .replace(/[^ATCG]+/g, '');
+    this.setState( prevState => ({ request : 
+      {...prevState.request, sequence: filtered
         }
       }), () => console.log(this.state.request))
   }
@@ -71,15 +65,11 @@ class FormContainer extends Component {
     return (
     
         <form className="container-fluid" onSubmit={this.handleFormSubmit}>
-       
-            <Input inputType={'text'}
-                   title= {'DNA sequence'} 
-                   name= {'sequence'}
+
+          <SequenceInput inputType={'text'}
                    value={this.state.request.sequence} 
-                   placeholder = {'Enter DNA sequence'}
-                   handleChange = {this.handleInput}
-                   
-            />
+                   onChange = {this.handleSequence}
+          />
         
           <Button 
               action = {this.handleFormSubmit}
