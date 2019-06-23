@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table'
 
-import config from '../config';
-
 class History extends Component {
   render() {
     console.log('Rendering history');
