@@ -13,6 +13,18 @@ services:
     networks:
       - bioalign
 
+  api:
+    build:
+      context: ./app/api
+    container_name: api
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./app/api:/api
+
+    networks:
+      - bioalign
+
 networks:
   bioalign:
     driver: bridge     
