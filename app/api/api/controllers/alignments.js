@@ -57,7 +57,7 @@ function getAlignments(req, res) {
   console.log('Received alignment mass query');
   const response = {
     count: db.length,
-    items: [db]
+    items: db
   }
   res.status(200).json(response);
 }
