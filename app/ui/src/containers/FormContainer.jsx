@@ -14,7 +14,7 @@ class FormContainer extends Component {
     this.state = {
       sequence: '',
       taskId: '',
-      status: {},
+      taskStatus: {},
       history: []
     }
     this.handleSequenceChange = this.handleSequenceChange.bind(this);
@@ -90,7 +90,7 @@ class FormContainer extends Component {
           .then(data => {
             console.log("GET task status successful", data);
             this.setState({
-              status: data
+              taskStatus: data
             });
           });
       }); 
@@ -139,7 +139,7 @@ class FormContainer extends Component {
         <br></br>
         <h4> Task Progress </h4>
         <TaskProgress
-          status={this.state.status}
+          status={this.state.taskStatus}
         />
 
         <br></br>
