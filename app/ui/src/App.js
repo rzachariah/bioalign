@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'react-table/react-table.css'
 import FormContainer from './containers/FormContainer';
 
 function App() {
@@ -13,7 +14,6 @@ function App() {
         </p>
       </header>
       <div className="col-md-6">
-        <h4> Make an alignment request </h4>
         <FormContainer />
       </div>
     </div>

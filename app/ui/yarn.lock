@@ -2449,7 +2449,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.6:
+classnames@^2.2.5, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://bosdevartifactory.ezesoft.net/artifactory/api/npm/npm-eze/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha1-Q5Nb/90pHzJtrQogUwmzjQD2UM4=
@@ -8109,6 +8109,13 @@ react-scripts@3.0.1:
     workbox-webpack-plugin "4.2.0"
   optionalDependencies:
     fsevents "2.0.6"
+
+react-table@^6.10.0:
+  version "6.10.0"
+  resolved "https://bosdevartifactory.ezesoft.net/artifactory/api/npm/npm-eze/react-table/-/react-table-6.10.0.tgz#20444b19d8ca3c1a08e7544e5c3a93e4ba56690e"
+  integrity sha1-IERLGdjKPBoI51ROXDqT5LpWaQ4=
+  dependencies:
+    classnames "^2.2.5"
 
 react-transition-group@^4.0.0:
   version "4.1.1"

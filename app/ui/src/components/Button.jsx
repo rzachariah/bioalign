@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const Button = (props) => {
   return (
     <button
@@ -10,6 +9,5 @@ const Button = (props) => {
       {props.title}
     </button>)
 }
-
 
 export default Button;
