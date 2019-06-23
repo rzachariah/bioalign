@@ -32,7 +32,8 @@ class FormContainer extends Component {
     let alignRequest = {
       sequence
     };
-    fetch('http://example.com', {
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+    fetch(`${apiUrl}/api/v1/alignments`, {
       method: "POST",
       body: JSON.stringify(alignRequest),
       headers: {
