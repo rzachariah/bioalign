@@ -4,7 +4,6 @@ import ReactTable from 'react-table'
 class TaskProgress extends Component {
   render() {
     console.log('Rendering TaskProgress', this.props.status);
-    //this.updateStatus(this.props.taskId);
     const columns = [{
       Header: 'TaskId',
       accessor: 'taskId'
@@ -19,7 +18,7 @@ class TaskProgress extends Component {
     return <ReactTable
       data={[this.props.status]}
       columns={columns}
-      defaultPageSize={3}
+      defaultPageSize={1}
       showPagination={false}
     />
   }

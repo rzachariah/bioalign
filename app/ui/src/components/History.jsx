@@ -4,32 +4,8 @@ import ReactTable from 'react-table'
 import config from '../config';
 
 class History extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      alignments: []
-    }
-    this.apiUrl = config.apiUrl;
-  }
-
-  /* This lifecycle hook gets executed when the component mounts */
-  componentDidMount() {
-    fetch(`${this.apiUrl}/api/v1/alignments`)
-      .then(response => {
-        response.json()
-          .then(data => {
-            console.log("GET alignments successful", data);
-            if (data.items) {
-              const newState = Object.assign({}, this.state, {
-                alignments: data.items
-              })
-              this.setState(newState);
-            }
-          })
-      })
-  }  
-
   render() {
+    console.log('Rendering history');
     const columns = [{
       Header: 'Sequence',
       accessor: 'sequence'
@@ -42,10 +18,10 @@ class History extends Component {
     }]
 
     return <ReactTable
-      data={this.state.alignments}
+      data={this.props.alignments}
       columns={columns}
       defaultPageSize={10}
-      showPagination={false}
+      showPagination={true}
     />
   }
 }

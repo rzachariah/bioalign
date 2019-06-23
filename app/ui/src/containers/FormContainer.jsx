@@ -14,13 +14,20 @@ class FormContainer extends Component {
     this.state = {
       sequence: '',
       taskId: '',
-      status: {}
+      status: {},
+      history: []
     }
     this.handleSequenceChange = this.handleSequenceChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.apiUrl = config.apiUrl;
   }
+
+  /* This lifecycle hook gets executed when the component mounts */
+  componentDidMount() {
+    this.timer = setInterval(()=> this.updateHistory(), 5000);
+    this.timer = setInterval(()=> this.updateStatus(), 2000);
+  }    
 
   handleSequenceChange(e) {
     let value = e.target.value;
@@ -54,12 +61,27 @@ class FormContainer extends Component {
         this.setState({
           taskId: data.taskId
         });
-        this.updateStatus(data.taskId);
       })
     })
   }
 
-  updateStatus(taskId) {
+  updateHistory() {
+    fetch(`${this.apiUrl}/api/v1/alignments`)
+      .then(response => {
+        response.json()
+          .then(data => {
+            console.log("GET alignments successful", data);
+            if (data.items) {
+              this.setState({
+                history: data.items
+              });
+            }
+          })
+      });    
+  }
+
+  updateStatus() {
+    const taskId = this.state.taskId;
     if (taskId) {
       console.log('Updating task status...');
       fetch(`${this.apiUrl}/api/v1/tasks/${taskId}`)
@@ -123,6 +145,7 @@ class FormContainer extends Component {
         <br></br>
         <h4> Completed alignments </h4>
         <History
+          alignments={this.state.history}
         />
 
       </form>
