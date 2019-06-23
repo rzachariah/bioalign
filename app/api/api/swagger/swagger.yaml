@@ -54,16 +54,16 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-  /status/{taskId}:
-    x-swagger-router-controller: status
+  /tasks/{taskId}:
+    x-swagger-router-controller: tasks
     get:
       tags : [ Alignment ]
-      description: Get status of an ongoing or receent alignment
+      description: Get status of an ongoing or recent alignment
       operationId: requestStatus
       parameters:
         - name: taskId
           in: path
-          description: Alignment taskId
+          description: Task identifier
           required: true
           type: string
       responses:

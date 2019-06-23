@@ -19,7 +19,7 @@ function requestAlignment(req, res) {
     taskId,
     status: 'Queued'
   }
-  const href = `/api/v1/status/${taskId}`;
+  const href = `/api/v1/tasks/${taskId}`;
   const response = {
     sequence,
     taskId,
