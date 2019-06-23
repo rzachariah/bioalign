@@ -25,10 +25,23 @@ paths:
           schema:
             $ref: "#/definitions/AlignRequest"
       responses:
+        "202":
+          description: Success
+          schema:
+            $ref: "#/definitions/AlignTaskStatus"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    get:
+      tags : [ Alignment ]
+      description: Get completed alignments
+      operationId: getAlignments
+      responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/AlignTask"
+            $ref: "#/definitions/AlignResponseCollection"
         default:
           description: Error
           schema:
@@ -37,7 +50,7 @@ paths:
     x-swagger-router-controller: alignments
     get:
       tags : [ Alignment ]
-      description: Get durable result of completed alignment
+      description: Get durable result of specific completed alignment
       operationId: getAlignment
       parameters:
         - name: id
@@ -70,7 +83,7 @@ paths:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/AlignStatus"
+            $ref: "#/definitions/AlignTaskStatus"
         default:
           description: Error
           schema:
@@ -94,16 +107,7 @@ definitions:
       sequence:
         type: string
         example: AATCCGCTAG
-  AlignTask:
-    required:
-      - taskId
-      - href
-    properties:
-      taskId:
-        type: string
-      href:
-        type: string
-  AlignStatus:
+  AlignTaskStatus:
     properties:
       taskId:
         type: string
@@ -121,6 +125,14 @@ definitions:
         type: string
       proteinPosition:
         type: number
+  AlignResponseCollection:
+    properties:
+      count:
+        type: integer
+      items:
+        type: array
+        items:
+          $ref: "#/definitions/AlignResponse"
   ErrorResponse:
     required:
       - message
@@ -128,5 +140,4 @@ definitions:
       message:
         type: string
   HealthResponse:
-    description: Health result
     type: string

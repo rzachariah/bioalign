@@ -3,7 +3,7 @@
 const config = require('./config');
 const Application = require('./app');
 
-const port = process.env.PORT || config.port;
+const port = config.port;
 const app = new Application();
 
 async function startup() {
