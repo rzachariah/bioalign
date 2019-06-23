@@ -34,6 +34,28 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /status/{taskId}:
+    x-swagger-router-controller: status
+    get:
+      tags : [ Alignment ]
+      description: Get status of an alignment
+      operationId: requestStatus
+      parameters:
+        - name: taskId
+          in: path
+          description: Alignment taskId
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/AlignStatus"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /health:
     x-swagger-router-controller: health
     get:
@@ -53,6 +75,7 @@ definitions:
     properties:
       sequence:
         type: string
+        example: AATCCGCTAG
   AlignTask:
     required:
       - taskId
@@ -61,6 +84,14 @@ definitions:
       taskId:
         type: string
       href:
+        type: string
+  AlignStatus:
+    properties:
+      taskId:
+        type: string
+      status:
+        type: string
+      message:
         type: string
   ErrorResponse:
     required:
