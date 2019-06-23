@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from biosearch import findProtein
 
 # Example alignment
-protein = findProtein('ATAACGTTATTATCCCGAGATTGTATATCATAAACTTCGTGCACTAAATAGACA')
+protein = findProtein('CGGGTACTGGTTTTGGTTTAGGAGCTGGCACTGGTTTCGGGA')
 print protein
 
 app = Flask(__name__)
