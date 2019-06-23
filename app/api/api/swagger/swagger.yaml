@@ -11,19 +11,10 @@ consumes:
 produces:
   - application/json
 paths:
-  /health:
-    x-swagger-router-controller: health
-    get:
-      description: Check health
-      operationId: checkHealth
-      responses:
-        "200":
-          description: Success
-          schema:
-            $ref: "#/definitions/HealthResponse"
   /alignments:
     x-swagger-router-controller: alignments
     post:
+      tags : [ Alignment ]
       description: Request a new asynchronous alignment
       operationId: alignRequest
       parameters:
@@ -43,6 +34,17 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /health:
+    x-swagger-router-controller: health
+    get:
+      tags : [ Health ]
+      description: Check health
+      operationId: checkHealth
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/HealthResponse"
 # complex objects have schema definitions
 definitions:
   AlignRequest:

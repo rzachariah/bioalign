@@ -1,8 +1,9 @@
 const perfNow = require('performance-now');
+const config=require('../config');
 
 const logRequestMiddleware = function (req, res, next) {
     // Don't log health checks
-    if (req.originalUrl.toLowerCase() === '/api/v1/health') {
+    if (req.originalUrl.toLowerCase() === `${config.routingPath}/health`) {
         next();
         return;
     }

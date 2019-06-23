@@ -1,26 +1,36 @@
 'use strict';
 
-var SwaggerExpress = require('swagger-express-mw');
-var app = require('express')();
-module.exports = app; // for testing
-const routingPath = '/api/v1';
+const express = require('express');
+const http = require('http');
+const bodyParser = require('body-parser');
 
-var config = {
-  appRoot: __dirname // required config
-};
+class Application {
+    constructor() {
+        this.expressApp = express();
+        this.server = null;
+        this.swaggerHandler = null;
+        this.expressAppHandler = null;
+    }
 
-app.get('/', (_, res) => {
-  res.redirect(routingPath);
-});
+    async initMiddlewares(config) {
+        this.swaggerHandler = require('./middlewares/swagger-middleware');
+        this.expressApp.enable('trust proxy');
+        this.expressApp.disable('x-powered-by');
+        const jsonParser = bodyParser.json({
+            limit: 1024 * 1024 * 1024 * 2,
+            type: 'application/json'
+        });
+        this.expressApp.use(jsonParser);
+        //initialize swagger and error handling middlewares
+        await this.swaggerHandler.initSwagger(config, this.expressApp, __dirname);
+    }
 
-SwaggerExpress.create(config, function(err, swaggerExpress) {
-  if (err) { throw err; }
+    run(port) {
+        this.expressApp.set('port', port);
+        console.log('Starting service on ' + port);
+        this.server = http.createServer(this.expressApp);
+        this.expressAppHandler = this.server.listen(port);
+    }
+}
 
-  // install middleware
-  swaggerExpress.register(app);
-
-  var port = process.env.PORT || 10010;
-  app.listen(port);
-
-  console.log(`server started on PORT ${port}`);
-});
+module.exports = Application;

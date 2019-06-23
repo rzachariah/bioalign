@@ -23,7 +23,6 @@ function initSwagger(config, app, appRoot) {
                 const options = {
                     swaggerUi: swaggerExpress.runner.config.swagger.docEndpoints.ui || 'docs', //swagger ui web page
                     apiDocs: swaggerExpress.runner.config.swagger.docEndpoints.raw || 'swagger', //api document in json format
-                    swaggerUiDir: ezeApiTools.swaggerDocsFolder //The filesystem path to your custom swagger-ui deployment to serve
                 };
                 app.use(SwaggerUi(swaggerExpress.runner.swagger, options));
 
