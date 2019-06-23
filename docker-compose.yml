@@ -25,6 +25,18 @@ services:
     networks:
       - bioalign
 
+  compute:
+    build:
+      context: ./app/compute
+    container_name: compute
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app/compute:/compute
+
+    networks:
+      - bioalign
+
 networks:
   bioalign:
     driver: bridge     
