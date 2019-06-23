@@ -10,7 +10,7 @@ class ProteinMatch:
         self.proteinPosition = index
 
     def __str__(self):
-        return "%s found in %s at position %s" %(self.dnaSequence, self.proteinName, self.proteinPosition)
+        return "DNA Sequence %s found in protein %s at position %s" %(self.dnaSequence, self.proteinName, self.proteinPosition)
 
 def getProteinFiles():
     return [f for f in os.listdir('.') if (os.path.isfile(f) and f.endswith(".fasta"))]
