@@ -18,7 +18,7 @@ services:
       context: ./app/api
     container_name: api
     ports:
-      - "4000:4000"
+      - "4000:80"
     volumes:
       - ./app/api:/api
 
