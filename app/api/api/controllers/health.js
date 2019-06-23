@@ -1,7 +1,10 @@
 'use strict';
 
 function checkHealth(req, res) {
-  res.status(200).json('OK');
+  const healthyStatus = {
+    status: "UP"
+  };
+  res.status(200).json(healthyStatus);
 }
 
 module.exports = {
