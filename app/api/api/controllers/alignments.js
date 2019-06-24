@@ -3,6 +3,7 @@ const uuid=require('uuid');
 
 const queue = require('../../queue/queue-service');
 const statusCache = require('../../status/cache');
+const dal=require('../../dal/alignment-dal');
 
 const db = [{
   id: 1,
@@ -53,11 +54,12 @@ function getAlignment(req, res) {
   }
 }
 
-function getAlignments(req, res) {
+async function getAlignments(req, res) {
   console.log('Received alignment mass query');
+  const items = await dal.getAll();
   const response = {
-    count: db.length,
-    items: db
+    count: items.length,
+    items
   }
   res.status(200).json(response);
 }

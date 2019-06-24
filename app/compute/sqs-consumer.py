@@ -5,7 +5,7 @@ from dal import storeAlignment
 
 sqs = boto3.resource('sqs', region_name='us-east-1')
 
-queue = sqs.get_queue_by_name(QueueName='test-queue')
+queue = sqs.get_queue_by_name(QueueName='align-request')
 
 def execute(task):
     # 0. validate task schema
@@ -14,7 +14,7 @@ def execute(task):
     # 2. perform task: align
     searchSequence = task["sequence"]
     match = align(searchSequence)
-    match.id = task["taskId"]
+    match.taskId = task["taskId"]
     print(match)
     storeAlignment(match)
 
