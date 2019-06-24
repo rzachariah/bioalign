@@ -4,6 +4,9 @@ Find protein containing a DNA sequence
 ## Overview
 This application enables users to match DNA sequences with proteins. Given a DNA sequence as a string of nucleotides, it will search a protein database and return the name and location of a protein with a matching seqeunce, if found.
 
+## Try it out!
+http://bioalign.s3.amazonaws.com/index.html
+
 ## Architecture
 This is a web application backed by containerized microservices running on AWS. The browser client makes REST api calls to perform alignments and query their state. Compute intensive alignments are performed asynchronously by a separate compute service.
 
@@ -13,12 +16,18 @@ The API is a NodeJs server with a Swagger documentation page.
 
 The compute engine is a python microservice that uses the Biopython library to perform alignments.
 
-The state of ongoing and completed alignments are stored in DynamoDB.
+Alignment requests are sent from the api to the compute engine via an sqs queue.
 
-Both the API and Compute service run as containerized microservices on AWS Fargate.
+The state of ongoing and completed alignments is stored in DynamoDB.
+
+Both the api and compute services run as containerized microservices on AWS Fargate.
 
 ## Getting Started
-You can run this application locally with one command.
+Build the application with one command.
+```
+docker-compose build
+```
+Run the application locally with one command.
 ```
 docker-compose up
 ```
@@ -33,12 +42,9 @@ This application is designed to be modular and testable. There are separate fold
 - **ui**: react app
 - **api**: nodejs REST api
 - **compute**: python compute server
-- **db**: persistent storage
 
-We use whitespace for tabs: 4 spaces.
-
-## Testing
-We write BDDs to test our application features. BDDs live in the tests folder.
+## Testing 
+New features should be validated with BDDs living in the tests folder. Example pending...
 
 ## Contributing
 1. Clone it!
