@@ -8,7 +8,7 @@ class TaskProgress extends Component {
       Header: 'TaskId',
       accessor: 'taskId'
     }, {
-      Header: 'Sequence',
+      Header: 'DNA Sequence',
       accessor: 'sequence'
     }, {
       Header: 'Status',

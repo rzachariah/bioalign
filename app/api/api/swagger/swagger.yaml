@@ -117,10 +117,12 @@ definitions:
         type: string
   AlignResponse:
     properties:
+      date:
+        type: string
+      time:
+        type: string
       sequence:
         type: string
-      found:
-        type: boolean
       proteinName:
         type: string
       proteinPosition:

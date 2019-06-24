@@ -3,6 +3,8 @@ const uuid=require('uuid');
 
 const queue = require('../../queue/queue-service');
 const statusCache = require('../../status/cache');
+const alignmentDal=require('../../dal/alignment-dal');
+const tasksDal=require('../../dal/tasks-dal');
 
 const db = [{
   id: 1,
@@ -21,7 +23,7 @@ const db = [{
   proteinPosition: 19
 }];
 
-function requestAlignment(req, res) {
+async function requestAlignment(req, res) {
   const request = req.swagger.params.request.value;
   console.log(`Received alignment request`, request);
   const sequence = request.sequence;
@@ -37,6 +39,7 @@ function requestAlignment(req, res) {
     status: 'Queued'
   };
   statusCache[taskId] = taskStatus;
+  await tasksDal.put(taskStatus);
   const href = `/api/v1/tasks/${taskId}`;
   res.location(href);
   res.status(202).json(taskStatus);
@@ -53,11 +56,12 @@ function getAlignment(req, res) {
   }
 }
 
-function getAlignments(req, res) {
+async function getAlignments(req, res) {
   console.log('Received alignment mass query');
+  const items = await alignmentDal.getAll();
   const response = {
-    count: db.length,
-    items: db
+    count: items.length,
+    items
   }
   res.status(200).json(response);
 }
