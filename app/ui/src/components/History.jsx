@@ -31,6 +31,9 @@ class History extends Component {
     }, {
       Header: 'Protein Position',
       accessor: 'proteinPosition'
+    }, {
+      Header: 'TaskId',
+      accessor: 'taskId'
     }]
 
     return <ReactTable
