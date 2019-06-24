@@ -21,7 +21,7 @@ async function getAll() {
 
   try {
     data = await ddb.scan(params).promise();
-    console.log("Success", data.Items);
+    console.log("Success | Retrieved count", data.Items.length);
     return data.Items.map(item => {
       return {
         date: item.date.S,

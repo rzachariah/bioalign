@@ -107,6 +107,7 @@ definitions:
       sequence:
         type: string
         example: AATCCGCTAG
+        minLength: 1
   AlignTaskStatus:
     properties:
       taskId:
