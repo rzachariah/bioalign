@@ -1,12 +1,7 @@
 from flask import Flask, jsonify
-from biosearch import findProtein
-
-# Example alignment
-protein = findProtein('CGGGTACTGGTTTTGGTTTAGGAGCTGGCACTGGTTTCGGGA')
-print protein
+from biosearch import align
 
 app = Flask(__name__)
-
 
 @app.route('/')
 def index():
@@ -15,3 +10,4 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
+

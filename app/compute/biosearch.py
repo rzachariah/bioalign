@@ -3,6 +3,10 @@ import os
 from Bio.Seq import Seq
 from Bio import SeqIO
 
+# Example alignment
+#protein = align('CGGGTACTGGTTTTGGTTTAGGAGCTGGCACTGGTTTCGGGA')
+#print(protein)
+
 class ProteinMatch:
     def __init__(self, dnaSequence, proteinName, index):
         self.dnaSequence=dnaSequence
@@ -15,12 +19,12 @@ class ProteinMatch:
 def getProteinFiles():
     return [f for f in os.listdir('.') if (os.path.isfile(f) and f.endswith(".fasta"))]
 
-def findProtein(dnaSequence):
+def align(dnaSequence):
     dnaSeq=Seq(dnaSequence)
     for file in getProteinFiles():
-        print "Looking for match in " + file
+        print("Looking for match in " + file)
         proteinRecord=SeqIO.read(file, "fasta")
         index=proteinRecord.seq.find(dnaSeq)
         if index>0:
             return ProteinMatch(dnaSequence, proteinRecord.description, index)
-    return None
+    return ProteinMatch(dnaSequence, "NONE", -1)
