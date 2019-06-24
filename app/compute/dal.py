@@ -13,7 +13,7 @@ def storeAlignment(alignment):
     table.put_item(
         Item={
             'date': dt.datetime.utcnow().date().isoformat(),
-            'time': dt.datetime.utcnow().isoformat(),
+            'time': dt.datetime.utcnow().isoformat()+'Z',
             'taskId': alignment.taskId,
             'sequence': alignment.sequence,
             'proteinName': alignment.proteinName,
