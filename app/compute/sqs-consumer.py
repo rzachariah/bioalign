@@ -1,6 +1,7 @@
 import boto3
 import json
 from biosearch import align
+from dal import storeAlignment
 
 sqs = boto3.resource('sqs', region_name='us-east-1')
 
@@ -13,7 +14,10 @@ def execute(task):
     # 2. perform task: align
     searchSequence = task["sequence"]
     match = align(searchSequence)
+    match.id = task["taskId"]
     print(match)
+    storeAlignment(match)
+
 
 while 1:
     print('Fetching messages')

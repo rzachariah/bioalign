@@ -8,13 +8,13 @@ from Bio import SeqIO
 #print(protein)
 
 class ProteinMatch:
-    def __init__(self, dnaSequence, proteinName, index):
-        self.dnaSequence=dnaSequence
+    def __init__(self, sequence, proteinName, index):
+        self.sequence=sequence
         self.proteinName = proteinName
         self.proteinPosition = index
 
     def __str__(self):
-        return "DNA Sequence %s found in protein %s at position %s" %(self.dnaSequence, self.proteinName, self.proteinPosition)
+        return "Sequence %s found in protein %s at position %s" %(self.sequence, self.proteinName, self.proteinPosition)
 
 def getProteinFiles():
     return [f for f in os.listdir('.') if (os.path.isfile(f) and f.endswith(".fasta"))]
