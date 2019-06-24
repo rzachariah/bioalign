@@ -33,6 +33,31 @@ async function put(task) {
   }
 }
 
+async function get(taskId) {
+  var params = {
+    Key: {
+      "taskId": {
+        S: taskId
+      }
+    },
+    TableName: "Tasks"
+  };
+
+  try {
+    data = await ddb.getItem(params).promise();
+    console.log("Success", data);
+    return {
+      taskId: data.Item.taskId.S,
+      sequence: data.Item.sequence.S,
+      status: data.Item.status.S
+    };
+  } catch (err) {
+    console.log("Error", err);
+    return null;
+  }
+}
+
 module.exports = {
-  put
+  put,
+  get
 }
