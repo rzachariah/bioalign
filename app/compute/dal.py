@@ -6,11 +6,12 @@ import datetime as dt
 
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 
-table = dynamodb.Table('Alignments')
+alignments_store = dynamodb.Table('Alignments')
+tasks_store = dynamodb.Table('Tasks')
 
 def storeAlignment(alignment):
-    print("Storing alignment")
-    table.put_item(
+    print("Storing alignment | " + str(alignment))
+    alignments_store.put_item(
         Item={
             'date': dt.datetime.utcnow().date().isoformat(),
             'time': dt.datetime.utcnow().isoformat()+'Z',
@@ -18,5 +19,15 @@ def storeAlignment(alignment):
             'sequence': alignment.sequence,
             'proteinName': alignment.proteinName,
             'proteinPosition': alignment.proteinPosition
+        }
+    )
+
+def putTaskStatus(taskStatus):
+    print("Storing taskStatus | " + str(taskStatus))
+    tasks_store.put_item(
+        Item={
+            'taskId': taskStatus.taskId,
+            'sequence': taskStatus.sequence,
+            'status': taskStatus.status
         }
     )
