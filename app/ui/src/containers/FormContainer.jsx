@@ -25,8 +25,9 @@ class FormContainer extends Component {
 
   /* This lifecycle hook gets executed when the component mounts */
   componentDidMount() {
-    this.timer = setInterval(()=> this.updateHistory(), 5000);
-    this.timer = setInterval(()=> this.updateStatus(), 2000);
+    this.updateHistory();
+    this.timer1 = setInterval(()=> this.updateHistory(), 5000);
+    this.timer2 = setInterval(()=> this.updateStatus(), 2000);
   }    
 
   handleSequenceChange(e) {
