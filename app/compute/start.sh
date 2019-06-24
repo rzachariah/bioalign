@@ -1,2 +1,2 @@
-python sqs-consumer.py &
-python app.py
+python app.py &
+python sqs-consumer.py
