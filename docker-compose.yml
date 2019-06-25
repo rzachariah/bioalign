@@ -9,7 +9,6 @@ services:
       - "35729:35729"
     volumes:
       - ./app/ui:/ui
-
     networks:
       - bioalign
 
@@ -19,12 +18,9 @@ services:
     container_name: api
     ports:
       - "4000:80"
-    volumes:
-      - ./app/api:/api
     environment:
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
-
     networks:
       - bioalign
 
@@ -34,13 +30,10 @@ services:
     container_name: compute
     ports:
       - "5000:5000"
-    volumes:
-      - ./app/compute:/compute
     environment:
       - PYTHONUNBUFFERED=1
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
-
     networks:
       - bioalign
 
@@ -48,15 +41,12 @@ services:
     build:
       context: ./tests/bdd
     container_name: bdd
-    volumes:
-      - ./tests/bdd:/bdd
     environment:
       - API_URL=http://api
     depends_on:
       - ui
       - api
       - compute
-
     networks:
       - bioalign
 
