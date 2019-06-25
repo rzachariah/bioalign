@@ -29,7 +29,10 @@ function initSwagger(config, app, appRoot) {
                 app.set('productPath', swaggerExpress.runner.swagger.basePath);
 
                 app.get('/', (req, res) => {
-                    res.redirect(swaggerExpress.runner.swagger.basePath);
+                    const healthyStatus = {
+                        status: "UP"
+                    };
+                    res.status(200).json(healthyStatus);
                 });
 
                 // these needs to registered at the end
