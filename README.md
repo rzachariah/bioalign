@@ -73,6 +73,9 @@ A `Tasks` table with hash key `taskId`. We query for task status by specific tas
 
 In principle, these two tables could be combined into one, so there is a tradeoff here. I chose to keep these separate to enable different access patterns. Also, these two kinds of data are treated differently. Alignment data is treated as durable and immutable. Task data is treated as transient and mutable. Task data could be extracted into a redis cache with a TTL.
 
+## Images
+There are image snips of various `components` in the images folder.
+
 ## TODO
 - HTTPS (Don't type your password in the search box)
 - CDN for web acceleration (Cloudfront)
