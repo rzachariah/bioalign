@@ -22,30 +22,35 @@ The state of ongoing and completed alignments is stored in DynamoDB.
 
 Both the api and compute services run as containerized microservices on AWS Fargate.
 
-## Getting Started
-Build and run the application with one command.
-```
-docker-compose up --build
-```
-Find the web UI at http://localhost:3000
-Find the swagger documentation at http://localhost:4000
-
-## Doctrine
-We practice sustainable development: every commit should leave the codebase in a state ready to accept new work.
+## Organization
 
 This application is designed to be modular and testable. There are separate folders for the various components
 
 - **ui**: react app
 - **api**: nodejs REST api
 - **compute**: python compute server
+- **bdd**: BDD tests
 
-New features should be validated with BDDs living in the tests folder.
+## Run it locally
+docker-compose allows us to build and run the application in one command
+```
+docker-compose up --build
+```
+or, if that's too much to type
+```
+run.sh
+```
+Find the web UI at http://localhost:3000
+Find the swagger documentation at http://localhost:4000
 
 ## Testing 
-To test the app
+New features should be validated with BDDs living in the tests folder. To test the app
 ```
 ./test.sh
 ```
+
+## Doctrine
+In this repo we practice sustainable development: every commit should leave the codebase in a state ready to accept new work.
 
 ## Contributing
 1. Clone it!

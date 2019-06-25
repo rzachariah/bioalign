@@ -2,8 +2,7 @@
 const uuid=require('uuid');
 
 const queue = require('../../queue/queue-service');
-const statusCache = require('../../status/cache');
-const alignmentDal=require('../../dal/alignment-dal');
+const alignmentDal=require('../../dal/alignments-dal');
 const tasksDal=require('../../dal/tasks-dal');
 
 const db = [{
