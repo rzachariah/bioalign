@@ -97,7 +97,7 @@ There are image snips of various `components` in the images folder.
 ## Doctrine
 In this repo we practice sustainable development: every commit should leave the codebase in a state ready to accept new work.
 
-We prefer small evolutionary changes to large revolutionary changes.
+We prefer small evolutionary changes to large revolutionary ones.
 
 We build small services that do one thing well--i.e. microservices.
 
