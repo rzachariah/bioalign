@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "cucumber-js"
+    "test": "node_modules/.bin/cucumber-js"
   },
   "dependencies": {
     "chai": "^4.2.0",
