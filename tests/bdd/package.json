@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "cucumber": "^5.1.0",
+    "fs-extra": "^8.0.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "license": "MIT"
+}

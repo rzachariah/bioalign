@@ -44,6 +44,23 @@ services:
     networks:
       - bioalign
 
+  bdd:
+    build:
+      context: ./tests/bdd
+    container_name: bdd
+    volumes:
+      - ./tests/bdd:/bdd
+    environment:
+      - API_URL=http://api
+    depends_on:
+      - ui
+      - api
+      - compute
+
+    networks:
+      - bioalign
+
+
 networks:
   bioalign:
     driver: bridge     
