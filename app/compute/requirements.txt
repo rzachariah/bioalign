@@ -1,4 +1,4 @@
-Flask==0.10.1
+Flask==0.12.3
 jsonify==0.5
 biopython==1.73
 boto3==1.9.174
