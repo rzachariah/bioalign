@@ -14,7 +14,7 @@ paths:
   /alignments:
     x-swagger-router-controller: alignments
     post:
-      tags : [ Alignment ]
+      tags : [ Alignments ]
       description: Request a new asynchronous alignment
       operationId: requestAlignment
       parameters:
@@ -34,7 +34,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
     get:
-      tags : [ Alignment ]
+      tags : [ Alignments ]
       description: Get completed alignments
       operationId: getAlignments
       responses:
@@ -46,31 +46,10 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-  /alignments/{id}:
-    x-swagger-router-controller: alignments
-    get:
-      tags : [ Alignment ]
-      description: Get durable result of specific completed alignment
-      operationId: getAlignment
-      parameters:
-        - name: id
-          in: path
-          description: Alignment id
-          required: true
-          type: number
-      responses:
-        "200":
-          description: Success
-          schema:
-            $ref: "#/definitions/AlignResponse"
-        default:
-          description: Error
-          schema:
-            $ref: "#/definitions/ErrorResponse"
   /tasks/{taskId}:
     x-swagger-router-controller: tasks
     get:
-      tags : [ Alignment ]
+      tags : [ Tasks ]
       description: Get status of an ongoing or recent alignment
       operationId: requestStatus
       parameters:

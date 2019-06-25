@@ -6,23 +6,13 @@ var sqs = new AWS.SQS({apiVersion: '2012-11-05'});
 
 const config = require('../config');
 
-const queue=[];
-
 class QueueService
 {
     constructor() {
     }
 
     enqueue(task) {
-        queue.push(task);
         this.sqsSend(task);
-    }
-
-    dequeue() {
-        if (queue.length > 0) {
-            return queue.shift();
-        }
-        return null;
     }
 
     sqsSend(message) {

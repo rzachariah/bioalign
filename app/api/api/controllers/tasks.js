@@ -1,6 +1,5 @@
 'use strict';
 
-const statusCache = require('../../status/cache');
 const tasksDal=require('../../dal/tasks-dal');
 
 async function requestStatus(req, res) {

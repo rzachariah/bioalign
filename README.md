@@ -31,6 +31,13 @@ This application is designed to be modular and testable. There are separate fold
 - **compute**: python compute server
 - **bdd**: BDD tests
 
+## Doctrine
+In this repo we practice sustainable development: every commit should leave the codebase in a state ready to accept new work.
+
+We prefer small evolutionary changes to large revolutionary changes.
+
+We build small services that do one thing well--i.e. microservices.
+
 ## Run it locally
 docker-compose allows us to build and run the application in one command
 ```
@@ -48,9 +55,6 @@ New features should be validated with BDDs living in the tests folder. To test t
 ```
 ./test.sh
 ```
-
-## Doctrine
-In this repo we practice sustainable development: every commit should leave the codebase in a state ready to accept new work.
 
 ## Contributing
 1. Clone it!
