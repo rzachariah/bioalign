@@ -47,10 +47,8 @@ or, if that's too much to type
 ```
 run.sh
 ```
-[](images/docker-compose.png)
 Find the web UI at http://localhost:3000
 Find the swagger documentation at http://localhost:4000
-[](images/swagger.png)
 
 ## Testing 
 New features should be validated with BDDs living in the tests folder. To test the app
