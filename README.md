@@ -38,7 +38,7 @@ docker-compose up --build
 ```
 or, if that's too much to type
 ```
-run.sh
+./run.sh
 ```
 Find the web UI at http://localhost:3000
 Find the swagger documentation at http://localhost:4000/api/v1
