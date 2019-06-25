@@ -48,7 +48,9 @@ or, if that's too much to type
 run.sh
 ```
 Find the web UI at http://localhost:3000
-Find the swagger documentation at http://localhost:4000
+Find the swagger documentation at http://localhost:4000/api/v1
+
+This application depends on some AWS resources, which you will not have access to. You will see AWS access errors in the logs for api and compute--the compute service will terminate due to this issue. I have a TODO to mock AWS locally with localstack.
 
 ## Testing 
 New features should be validated with BDDs living in the tests folder. To test the app
