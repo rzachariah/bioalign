@@ -20,7 +20,7 @@ class History extends Component {
     }, {
       Header: 'Time2',
       id: "time2",
-      accessor: d => new Date(d),
+      accessor: d => new Date(d.time),
       show: false
     }, {
       Header: 'DNA Sequence',
