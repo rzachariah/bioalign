@@ -30,7 +30,7 @@ def execute(task):
 
 while 1:
     print('Fetching messages...')
-    messages = queue.receive_messages(WaitTimeSeconds=5)
+    messages = queue.receive_messages(WaitTimeSeconds=20)
     for message in messages:
         print("Message received: {0}".format(message.body))
         task = json.loads(message.body)
