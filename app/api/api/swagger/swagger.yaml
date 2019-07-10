@@ -85,6 +85,7 @@ definitions:
     properties:
       sequence:
         type: string
+        pattern: '^[ACTG]*$'
         example: AATCCGCTAG
         minLength: 1
   AlignTaskStatus:
