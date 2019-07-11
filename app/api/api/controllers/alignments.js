@@ -28,7 +28,7 @@ async function requestAlignment(req, res) {
 
 async function getAlignments(req, res) {
   console.log('Received alignment mass query');
-  const items = await alignmentDal.getAll();
+  const items = await alignmentDal.getToday();
   const response = {
     count: items.length,
     items
