@@ -1,4 +1,4 @@
-FROM python
+FROM python:3
 
 RUN python --version
 
@@ -11,4 +11,4 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-ENTRYPOINT [ "bash", "start.sh" ]
+CMD [ "python", "sqs-consumer.py" ]

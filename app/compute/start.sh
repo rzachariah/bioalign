@@ -1,1 +1,0 @@
-python sqs-consumer.py
